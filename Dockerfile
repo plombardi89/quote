@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-FROM golang:1.12 as foundation
+FROM golang:1.15 as foundation
 
 WORKDIR /build
 COPY go.mod .
