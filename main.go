@@ -138,7 +138,7 @@ func main() {
 
 	random := randomzeug.NewRandom()
 	s := Server{
-		id:     generateServerID(random),
+		id:     getServerID(os.Hostname, random),
 		host:   os.Getenv(EnvHOST),
 		port:   port,
 		router: chi.NewRouter(),
