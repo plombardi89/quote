@@ -170,7 +170,15 @@ var fruits = []string{
 	"tangerine",
 }
 
-func generateServerID(random *randomzeug.Random) string {
+func getServerID(hostnameFunc func() (string, error), random *randomzeug.Random) string {
+	if hostnameFunc == nil {
+		hostnameFunc = os.Hostname
+	}
+
+	if hostname, err := hostnameFunc(); err == nil && hostname != "" {
+		return hostname
+	}
+
 	adjective := random.RandomSelectionFromStringSlice(adjectives)
 	fruit := random.RandomSelectionFromStringSlice(fruits)
 
