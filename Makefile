@@ -21,10 +21,14 @@ run: build
 
 build.image:
 	docker build \
-	-t plombardi89/qotm \
-	-t plombardi89/qotm:$(GIT_COMMIT) \
+	-t plombardi89/quote \
+	-t plombardi89/quote:$(GIT_COMMIT) \
 	-f Dockerfile \
 	.
+
+push.image:
+	docker push plombardi89/quote
+	docker push plombardi89/quote:$(GIT_COMMIT)
 
 clean:
 	rm -rf bin
